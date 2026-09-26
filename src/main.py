@@ -1,7 +1,13 @@
 import pygame
-import pygame_gui
+from renderer import *
 from OpenGL.GL import *
 from pygame.locals import *
+
+point1 = Point(0.0, 0.5)
+point2 = Point(-0.5, -0.5)
+point3 = Point(0.5, -0.5)
+
+color = Color(255, 0, 0)
 
 pygame.init()
 
@@ -14,22 +20,6 @@ pygame.display.set_caption("Teleia Physis")
 
 glClearColor(1.0, 0.0, 1.0, 1.0)
 
-manager = pygame_gui.UIManager((800, 600))
-clock = pygame.time.Clock()
-for event in pygame.event.get():
-    manager.process_events(event)
-
-time_delta = clock.tick(60) / 1000.0
-
-input_box = pygame_gui.elements.UITextEntryLine(
-    relative_rect=pygame.Rect(300, 250, 200, 40),
-    manager=manager
-)
-
-manager.process_events(event)
-manager.update(time_delta)
-manager.draw_ui(screen)
-
 running = True
 
 while running:
@@ -39,15 +29,7 @@ while running:
 
     glClear(GL_COLOR_BUFFER_BIT)
 
-    glBegin(GL_TRIANGLES)
-
-    glColor3f(0.0, 1.0, 1.0)
-
-    glVertex2f(0, 0.5)
-    glVertex2f(-0.5, -0.5)
-    glVertex2f(0.5, -0.5)
-
-    glEnd()
+    draw_triangle(point1, point2, point3,color)
 
     pygame.display.flip()
 
