@@ -32,8 +32,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    dt = (pygame.time.Clock().tick(60) / 1000.0)
     glClear(GL_COLOR_BUFFER_BIT)
-
     pygame.display.flip()
 
 pygame.quit()
