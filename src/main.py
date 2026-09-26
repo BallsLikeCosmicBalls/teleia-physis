@@ -3,22 +3,27 @@ from renderer import *
 from OpenGL.GL import *
 from pygame.locals import *
 
-point1 = Point(0.0, 0.5)
-point2 = Point(-0.5, -0.5)
-point3 = Point(0.5, -0.5)
-
-color = Color(255, 0, 0)
-
 pygame.init()
 
+width = 1920
+height = 1080
+
 screen = pygame.display.set_mode(
-    (800, 600),
+    (width, height),
     DOUBLEBUF | OPENGL
+)
+
+aspect_ratio = width / height
+
+glOrtho(
+    -aspect_ratio, aspect_ratio,
+    -1,1,
+    -1,1
 )
 
 pygame.display.set_caption("Teleia Physis")
 
-glClearColor(1.0, 0.0, 1.0, 1.0)
+glClearColor(1.0, 1.0, 0.9, 1.0)
 
 running = True
 
@@ -28,8 +33,6 @@ while running:
             running = False
 
     glClear(GL_COLOR_BUFFER_BIT)
-
-    draw_triangle(point1, point2, point3,color)
 
     pygame.display.flip()
 
