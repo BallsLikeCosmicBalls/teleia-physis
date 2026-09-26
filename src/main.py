@@ -23,7 +23,7 @@ glOrtho(
 
 pygame.display.set_caption("Teleia Physis")
 
-glClearColor(1.0, 1.0, 0.9, 1.0)
+glClearColor(1.0, 0.95, 0.85, 1.0)
 
 running = True
 
