@@ -44,11 +44,14 @@ class PhysicsObject:
             self.velocity.x = -self.velocity.x * decay
             self.position.x = 1 * aspect_ratio - radius
 
-class Spring(PhysicsObject):
-    pass
+        if self.position.y <= -1 + radius or self.position.y >= 1 - radius:
+            self.velocity.x *= decay
 
-class Rope(PhysicsObject):
-    pass
+        if 0.01 > self.velocity.x > -0.01:
+            self.velocity.x = 0
+
+        if 0.01 > self.velocity.y > -0.01:
+            self.velocity.y = 0
 
 class ConstantMagnet(PhysicsObject):
     pass
@@ -59,4 +62,9 @@ class ElectroMagnet(PhysicsObject):
 class Anchor:
     pass
 
+class Spring:
+    pass
+
+class Rope:
+    pass
 
