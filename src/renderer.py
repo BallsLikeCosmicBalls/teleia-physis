@@ -15,7 +15,7 @@ class Color:
 def draw_triangle(a, b, c, color):
     glBegin(GL_TRIANGLES)
 
-    glColor3f(color.r, color.g, color.b)
+    glColor3f(color.r / 255, color.g / 255, color.b/ 255)
 
     glVertex2f(a.x, a.y)
     glVertex2f(b.x, b.y)
@@ -26,7 +26,7 @@ def draw_triangle(a, b, c, color):
 def draw_quad(a, b, color):
     glBegin(GL_TRIANGLES)
 
-    glColor3f(color.r, color.g, color.b)
+    glColor3f(color.r / 255, color.g / 255, color.b / 255)
 
     glVertex2f(a.x, a.y)
     glVertex2f(b.x, b.y)
@@ -41,7 +41,7 @@ def draw_quad(a, b, color):
 def draw_circle(r, c, segments, color):
     glBegin(GL_TRIANGLE_FAN)
 
-    glColor3f(color.r, color.g, color.b)
+    glColor3f(color.r / 255, color.g / 255, color.b / 255)
 
     glVertex2f(c.x, c.y)
 
