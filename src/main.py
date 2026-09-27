@@ -30,12 +30,12 @@ glClearColor(1.0, 0.95, 0.85, 1.0)
 decay = 0.9
 gravity = -9.81
 position = Vector2(0, 1 - radius)
-velocity = Vector2(0, 0)
+velocity = Vector2(1, 0)
 
 ball = PhysicsObject(position, velocity)
 ball.acceleration = Vector2(0, gravity)
 
-color = Color( 127, 130, 200)
+color = Color( 140, 140, 220)
 
 clock = pygame.time.Clock()
 running = True
