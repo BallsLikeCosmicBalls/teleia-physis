@@ -28,6 +28,12 @@ class PhysicsObject:
         self.position.x += self.velocity.x * dt
         self.position.y += self.velocity.y * dt
 
+        if self.position.y < -1 + 0.25 or self.position.y > 1 - 0.25:
+            self.velocity.y = -self.velocity.y
+
+        if self.position.x < -1 + 0.25 or self.position.x > 1 - 0.25:
+            self.velocity.x = -self.velocity.x
+
 class Spring(PhysicsObject):
     pass
 

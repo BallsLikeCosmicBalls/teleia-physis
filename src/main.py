@@ -28,7 +28,7 @@ pygame.display.set_caption("Teleia Physis")
 glClearColor(1.0, 0.95, 0.85, 1.0)
 
 gravity = -9.81
-position = Vector2(0, 0.8)
+position = Vector2(0, 0.75)
 velocity = Vector2(0.5, 0)
 
 ball = PhysicsObject(position, velocity)
@@ -47,7 +47,7 @@ while running:
     ball.update(dt)
 
     glClear(GL_COLOR_BUFFER_BIT)
-    draw_circle(0.25, ball.position, 256, color1)
+    draw_circle(0.25, ball.position, 64, color1)
     pygame.display.flip()
 
 pygame.quit()
