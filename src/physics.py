@@ -21,28 +21,28 @@ class PhysicsObject:
         self.velocity = velocity
         self.acceleration = Vector2(0, 0)
 
-    def update(self, dt):
+    def update(self, dt, aspect_ratio, radius):
         self.velocity.x += self.acceleration.x * dt
         self.velocity.y += self.acceleration.y * dt
 
         self.position.x += self.velocity.x * dt
         self.position.y += self.velocity.y * dt
 
-        if self.position.y < -1 + 0.25:
+        if self.position.y < -1 + radius:
             self.velocity.y = -self.velocity.y
-            self.position.y = -1 + 0.25
+            self.position.y = -1 + radius
 
-        elif self.position.y > 1 - 0.25:
+        elif self.position.y > 1 - radius:
             self.velocity.y = -self.velocity.y
-            self.position.y = 1 - 0.25
+            self.position.y = 1 - radius
 
-        if self.position.x < -1 + 0.25:
+        if self.position.x < -1 * aspect_ratio + radius:
             self.velocity.x = -self.velocity.x
-            self.position.x = -1 + 0.25
+            self.position.x = -1 * aspect_ratio + radius
 
-        elif self.position.x > 1 - 0.25:
+        elif self.position.x > 1 * aspect_ratio - radius:
             self.velocity.x = -self.velocity.x
-            self.position.x = 1 - 0.25
+            self.position.x = 1 * aspect_ratio - radius
 
 class Spring(PhysicsObject):
     pass
