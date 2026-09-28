@@ -15,7 +15,7 @@ class Vector2:
         return self
 
 
-class PhysicsObject:
+class PhysicsObject: # TODO: make the class not only for circles
     def __init__(self, position, velocity):
         self.position = position
         self.velocity = velocity
