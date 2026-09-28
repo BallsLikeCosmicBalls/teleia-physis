@@ -6,16 +6,17 @@ class Point:
         self.x = x
         self.y = y
 
-class Color:
-    def __init__(self, r, g, b):
+class Colour:
+    def __init__(self, r, g, b, alpha):
         self.r = r
         self.g = g
         self.b = b
+        self.alpha = alpha
 
-def draw_triangle(a, b, c, color):
+def draw_triangle(a, b, c, colour):
     glBegin(GL_TRIANGLES)
 
-    glColor3f(color.r / 255, color.g / 255, color.b/ 255)
+    glColor4f(colour.r / 255, colour.g / 255, colour.b/ 255, colour.alpha)
 
     glVertex2f(a.x, a.y)
     glVertex2f(b.x, b.y)
@@ -23,10 +24,10 @@ def draw_triangle(a, b, c, color):
 
     glEnd()
 
-def draw_quad(a, b, color):
+def draw_quad(a, b, colour):
     glBegin(GL_TRIANGLES)
 
-    glColor3f(color.r / 255, color.g / 255, color.b / 255)
+    glColor4f(colour.r / 255, colour.g / 255, colour.b / 255, colour.alpha)
 
     glVertex2f(a.x, a.y)
     glVertex2f(b.x, b.y)
@@ -38,10 +39,10 @@ def draw_quad(a, b, color):
 
     glEnd()
 
-def draw_circle(r, c, segments, color):
+def draw_circle(r, c, segments, colour):
     glBegin(GL_TRIANGLE_FAN)
 
-    glColor3f(color.r / 255, color.g / 255, color.b / 255)
+    glColor4f(colour.r / 255, colour.g / 255, colour.b / 255, colour.alpha / 100)
 
     glVertex2f(c.x, c.y)
 
@@ -52,4 +53,14 @@ def draw_circle(r, c, segments, color):
         y = c.y + r * math.sin(angle)
 
         glVertex2f(x,y)
+    glEnd()
+
+def draw_line(a, b, colour):
+    glBegin(GL_LINES)
+
+    glColor4f(colour.r / 255, colour.g / 255, colour.b / 255, colour.alpha)
+
+    glVertex2f(a.x, a.y)
+    glVertex2f(b.x, b.y)
+
     glEnd()
