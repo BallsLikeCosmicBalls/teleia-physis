@@ -28,6 +28,11 @@ glOrtho(
 pygame.display.set_caption("Teleia Physis")
 glClearColor(1.0, 0.95, 0.85, 1.0)
 
+
+
+glEnable(GL_BLEND)
+glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+
 #// variables for test physics object//#
 
 bounce_loss = 0.95
@@ -43,8 +48,9 @@ ball.acceleration = Vector2(0, gravity)
 
 default_object_color = Colour(140, 140, 220, 1)
 button_color = Colour(255, 220, 170, 1)
+button_2_color = Colour(255, 235, 198, 1)
 line_color = Colour(20, 20, 20, 1)
-menu_color = Colour(0, 0, 255, 0)
+menu_color = Colour(237, 202, 137, 0.55)
 
 #// menu button variables //#
 
@@ -70,6 +76,8 @@ running = True
 open_menu = False
 simulate = False
 
+menu_button_color = button_color
+
 while running:
 
     dt = clock.tick(60) / 1000.0
@@ -86,14 +94,17 @@ while running:
     glClear(GL_COLOR_BUFFER_BIT)
 
     ball.draw(radius, position, 64, default_object_color)
-    draw_button(menu_button_x, menu_button_y, menu_button_width, menu_button_height, button_color)
-    draw_button(simulate_button_x, simulate_button_y, simulate_button_width, simulate_button_height, button_color)
 
     draw_line(ball.position, (ball.velocity * 0.1) + ball.position, line_color)
 
     if open_menu:
         draw_quad(Point(0.6, -1), Point(1 + aspect_ratio, 1), menu_color)
-        print(menu_color.alpha)
+        menu_button_color = button_2_color
+    else:
+        menu_button_color = button_color
+
+    draw_button(menu_button_x, menu_button_y, menu_button_width, menu_button_height, menu_button_color)
+    draw_button(simulate_button_x, simulate_button_y, simulate_button_width, simulate_button_height, button_color)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

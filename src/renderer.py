@@ -42,7 +42,7 @@ def draw_quad(a, b, colour):
 def draw_circle(r, c, segments, colour):
     glBegin(GL_TRIANGLE_FAN)
 
-    glColor4f(colour.r / 255, colour.g / 255, colour.b / 255, colour.alpha / 100)
+    glColor4f(colour.r / 255, colour.g / 255, colour.b / 255, colour.alpha)
 
     glVertex2f(c.x, c.y)
 
